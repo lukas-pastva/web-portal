@@ -2,11 +2,10 @@
 
 function sysHome()
 {
-    //smartCalendarView();
-    if ($_COOKIE['cookieUsername'] == 'admin') {
+    if ($_SERVER['SERVER_NAME'] == 'portal.mltech.sk') {
         //if( function_exists('businessBazosView') )businessBazosView();
         if (function_exists('smartPostTrackingView')) smartPostTrackingView();
-        if (function_exists('smartDodko')) smartDodko();
+        if (function_exists('smartTogether')) smartTogether();
         if (function_exists('sysCelebrationView')) sysCelebrationView();
     }
     echoSysMenu();

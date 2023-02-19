@@ -69,7 +69,7 @@ function smartPostTrackingDelete()
     abstractDelete('smartPostTracking', 'row', escapeQuotes($_REQUEST['id']));
 }
 
-function smartDodko(){
+function smartTogether(){
     sysPrintBlockHeader(6, 'Together!');
 
     $start = strtotime('2019-08-27 11:31:00');
