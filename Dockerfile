@@ -22,8 +22,8 @@ RUN curl -s -o /tmp/go-pear.phar http://pear.php.net/go-pear.phar && \
     chmod +x /usr/bin/pear && \
     pear install mail Net_SMTP
 
-USER www-data
+RUN mkdir -p /var/www/uploads && chmod 777 /var/www/uploads && chown www-data:www-data /var/www/uploads
 
+USER www-data
 COPY ./html /var/www/html
-RUN mkdir -p /var/www/uploads && chmod 777 /var/www/uploads
 USER root
