@@ -25,7 +25,7 @@ function sysToolsJavaModuleGeneratorGo()
     $class_sysNameCamelCase_Repository = null;
     $class_sysNameCamelCase_Service = null;
 
-    $class_sysNameCamelCase_Service .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_Service .= 'package api.web.' . $sysNameLowerCase . ';
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +90,7 @@ public class ' . $sysNameCamelCase . 'Service {
 	}
 }';
 
-    $class_sysNameCamelCase_Repository .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_Repository .= 'package api.web.' . $sysNameLowerCase . ';
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -101,7 +101,7 @@ public interface ' . $sysNameCamelCase . 'Repository extends JpaRepository<' . $
 }';
 
 
-    $class_sysNameCamelCase_NotFoundException .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_NotFoundException .= 'package api.web.' . $sysNameLowerCase . ';
 
 import com.devops.api.exception.ApiRestException;
 import org.springframework.http.HttpStatus;
@@ -117,7 +117,7 @@ public class ' . $sysNameCamelCase . 'NotFoundException extends ApiRestException
 }';
 
 
-    $class_sysNameCamelCase_Mapper .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_Mapper .= 'package api.web.' . $sysNameLowerCase . ';
 
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MapperFactory;
@@ -187,7 +187,7 @@ public class ' . $sysNameCamelCase . 'Mapper extends ConfigurableMapper {
 
 }';
 
-    $class_sysNameCamelCase_Dto .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_Dto .= 'package api.web.' . $sysNameLowerCase . ';
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -231,7 +231,7 @@ public class ' . $sysNameCamelCase . 'Dto {
     $class_sysNameCamelCase_Dto .= '
 }';
 
-    $class_sysNameCamelCase_Controller .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase_Controller .= 'package api.web.' . $sysNameLowerCase . ';
 
 import com.devops.api.exception.ApiRestException;
 import io.swagger.annotations.ApiOperation;
@@ -331,7 +331,7 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 }';
 
-    $class_sysNameCamelCase .= 'package com.devops.api.web.' . $sysNameLowerCase . ';
+    $class_sysNameCamelCase .= 'package api.web.' . $sysNameLowerCase . ';
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
