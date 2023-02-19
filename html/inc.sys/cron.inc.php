@@ -20,8 +20,6 @@ function sysCron()
     if (((time() - strtotime($row['text'])) > 59) || $forced) {
         echo "\n60 seconds cron\n";
         //Running reports
-        if (function_exists('acioprReporting')) acioprReporting();
-
         sysUpdateOnlineUser();
 
         smart_mysql_query("UPDATE sysConfig set text = '" . (date('Y-m-d H:i:s', time())) . "' where name = 'timestampCron60'");

@@ -1,49 +1,5 @@
 <?php
 
-function acioprReporting()
-{
-    echo "\nACIOPR Reporting cron\n";
-    //select all from reporting table and go one by one
-    $result = smart_mysql_query($sql = "
-            SELECT t.name as type, r.name as name, r.timestamp as timestamp, r.id as id, r.query as query, s.seckey as seckey, s.url as url, f.value as frequency, a.name as action, l.name as sqlServer 
-            FROM acioprReportingReports r 
-            LEFT JOIN acioprReportingServer s on s.id = r.acioprReportingServerId 
-            LEFT JOIN acioprReportingFrequency f on f.id = r.acioprReportingFrequencyId 
-            LEFT JOIN acioprReportingAction a on a.id = r.acioprReportingActionId
-            LEFT JOIN acioprReportingType t on t.id = r.acioprReportingTypeId
-            LEFT JOIN acioprReportingServerSql l on l.id = r.acioprReportingServerSqlId                        
-            where (FROM_UNIXTIME(UNIX_TIMESTAMP(r.timestamp)+(f.value*60))) < (now());");
-    if (($result->num_rows != false) && ($result->num_rows > 0)) {
-        while ($row = $result->fetch_assoc()) {
-            $row = escapeFromDbToWeb($row);
-
-            $rand = getUniqueId();
-            $query = $row['query'];
-            $query = str_ireplace('###Y', date(date('Y')), $query);
-            $query = str_ireplace('###y', date(date('y')), $query);
-            $query = str_ireplace('###m', date(date('m')), $query);
-            $query = str_ireplace('###d', date(date('d')), $query);
-            $cron = $row['url']
-                . '&key=' . $row['seckey']
-                . '&action=' . $row['action']
-                . '&query=' . base64_encode($query)
-                . '&runid=' . base64_encode($rand)
-                . '&name=' . base64_encode($row['name'])
-                . '&type=' . base64_encode($row['type'])
-                . '&sqlServer=' . base64_encode(strlen($row['sqlServer']) > 0 ? $row['sqlServer'] : 'null');
-
-            //update the DB, that the cron was ran
-            smart_mysql_query($sql = "UPDATE acioprReportingReports SET timestamp = '" . date('Y-m-d H:i:s') . "' WHERE id = '" . $row['id'] . "'");
-            logDebug('Calling cron ' . $cron);
-            $return = callCurl($cron);
-            logDebug('Cron return data:' . $return['data'] . ', err: ' . print_r($return['err'], true));
-            echo $return['data'];
-
-        }
-    }
-
-}
-
 function sysToolsLogBeautifier()
 {
 
