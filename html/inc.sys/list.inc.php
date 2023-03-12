@@ -248,7 +248,11 @@ function sysDesignViewType2($print = false)
 
 function sysDetailGo($sectionName, $id)
 {
-    global $notListedFields;
+    $notListedFields = Array(
+        'monthly',
+        'length',
+        'daily'
+    );
 
     $section = sysSectionGet($sectionName);
     $abstract = $section['type'] == 'abstract';
@@ -332,7 +336,6 @@ function sysDetailGo($sectionName, $id)
 
 function sysDisplayList($section)
 {
-    global $notListedFields;
     $abstract = sysSectionGetType($section) == 'abstract';
     sysPrintHeader();
 

@@ -57,7 +57,7 @@ function unsmartconfirmAllPhotoForCamera()
 function smartconfirmTopPhotoForCamera()
 {
     $cam = sqlGetRow('SELECT * FROM smartEnumCam where id = "' . escapeQuotes($_REQUEST['id']) . '"');
-    $toConfirm = PHOTO_CONFIRM - escapeQuotes($_REQUEST['lessToConfirm']);
+    $toConfirm = 100 - escapeQuotes($_REQUEST['lessToConfirm']);
     $result = smart_mysql_query('SELECT * from photo where location = "' . $cam['location'] . '" and smartEnumCamid = "' . $cam['name'] . '"  and checked = 0 order by timestamp desc LIMIT ' . $toConfirm, false);
     while ($row = $result->fetch_assoc()) {
         smart_mysql_query('UPDATE smartphoto set checked = 1 WHERE id = "' . $row['id'] . '" ', false);
@@ -178,7 +178,7 @@ function displayCamSavedImages($location)
 
             if ($result->num_rows > 0) {
                 echo '<tbody>
-				<tr><td><br /><button class="truncate-all" id="' . $rowCam['id'] . '">Truncate all</button>&nbsp;&nbsp;&nbsp;<button class="sysDelete-all" id="' . $rowCam['id'] . '">Delete all</button>&nbsp;&nbsp;&nbsp;<button class="confirm-all" id="' . $rowCam['id'] . '">Confirm all</button>&nbsp;&nbsp;&nbsp;<button class="unconfirm-all" id="' . $rowCam['id'] . '">UnConfirm all</button>&nbsp;&nbsp;&nbsp;<button class="confirm-top" id="' . $rowCam['id'] . '">Confirm top ' . PHOTO_CONFIRM . '</button><br /><br /></td></tr>
+				<tr><td><br /><button class="truncate-all" id="' . $rowCam['id'] . '">Truncate all</button>&nbsp;&nbsp;&nbsp;<button class="sysDelete-all" id="' . $rowCam['id'] . '">Delete all</button>&nbsp;&nbsp;&nbsp;<button class="confirm-all" id="' . $rowCam['id'] . '">Confirm all</button>&nbsp;&nbsp;&nbsp;<button class="unconfirm-all" id="' . $rowCam['id'] . '">UnConfirm all</button>&nbsp;&nbsp;&nbsp;<button class="confirm-top" id="' . $rowCam['id'] . '">Confirm top 100</button><br /><br /></td></tr>
 				';
                 $first = true;
                 while ($row = $result->fetch_assoc()) {
@@ -189,7 +189,7 @@ function displayCamSavedImages($location)
 						' . ($first ? '<button class="duplicate-10 narrow" id="' . $row['id'] . '" >duplicate 10</button>' : '') . '
 							<button class="sysDelete narrow" id="' . $row['filename'] . '" photoid="' . $row['id'] . '">vymaž</button>';
 
-                    if ($i < PHOTO_CONFIRM && $row['checked'] == '0') {
+                    if ($i < 100 && $row['checked'] == '0') {
                         echo '<img src="thumbnailer.php?location=' . $location . '&file=' . $row['filename'] . '" width="100" /> ';
                         $i ++;
                     }
