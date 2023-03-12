@@ -3,7 +3,7 @@
 function initial_functions()
 {
     ini_set('arg_separator.output', '&amp;');
-    //error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(E_ALL ^ E_NOTICE);
     date_default_timezone_set('UTC');
     mb_internal_encoding('UTF-8');
     smart_mysql_query('SET NAMES utf8');
