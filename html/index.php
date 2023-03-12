@@ -14,7 +14,7 @@ if ($action == 'api') {
     sysApiCall(escapeQuotes($_REQUEST['apiKey']), escapeQuotes($_REQUEST['action']));
     exit();
 }
-if ($action == 'cron12S3Wf4fs42aG1D3AG5') {
+if ($action == 'cronXXX') {
     echo "\nCalling cron\n";
     sysCron();
     exit();
