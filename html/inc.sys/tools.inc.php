@@ -383,7 +383,7 @@ public class ' . $sysNameCamelCase . 'Model implements Serializable {
         } else {
             $class_sysNameCamelCase .= '
 			@Length(max = 128)
-			@Blank
+			// @NotBlank
 			private String ' . $name . ';
 		';
         }
