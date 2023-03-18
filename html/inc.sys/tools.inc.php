@@ -213,7 +213,7 @@ public class ' . $sysNameCamelCase . 'Dto {
 
         if ($type == 'int') {
             $class_sysNameCamelCase_Dto .= '
-			@ApiModelProperty(required = true, notes = "' . $name . '", example = "123")
+			@ApiModelProperty(required = false, notes = "' . $name . '", example = "123")
 			@NotNull
 			private Long ' . $name . ';
 		';
@@ -221,7 +221,7 @@ public class ' . $sysNameCamelCase . 'Dto {
             $class_sysNameCamelCase_Dto .= '';
         } else {
             $class_sysNameCamelCase_Dto .= '
-			@ApiModelProperty(required = true, notes = "' . $name . '", example = "Foo Bar")
+			@ApiModelProperty(required = false, notes = "' . $name . '", example = "Foo Bar")
 			@Length(max = 128)
 			private String ' . $name . ';
 		';
@@ -271,7 +271,7 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 	@ApiOperation(value = "Get item", response = ' . $sysNameCamelCase . 'Dto.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<' . $sysNameCamelCase . 'Dto> get' . $sysNameCamelCase . '(@ApiParam(value = "ID of item", example = "1", required = true)
+	public ResponseEntity<' . $sysNameCamelCase . 'Dto> get' . $sysNameCamelCase . '(@ApiParam(value = "ID of item", example = "1", required = false)
 																	 @PathVariable Long id) throws ApiRestException {
 
 		' . $sysNameCamelCase . 'Model item = service.findById(id);
@@ -282,7 +282,7 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 	@ApiOperation(value = "Create item", response = ' . $sysNameCamelCase . 'Dto.class)
 	@PostMapping
-	public ResponseEntity<' . $sysNameCamelCase . 'Dto> create' . $sysNameCamelCase . '(@ApiParam(value = "model", required = true)
+	public ResponseEntity<' . $sysNameCamelCase . 'Dto> create' . $sysNameCamelCase . '(@ApiParam(value = "model", required = false)
 																		@RequestBody @Valid ' . $sysNameCamelCase . 'Dto dto) throws ApiRestException {
 
 		' . $sysNameCamelCase . 'Model item = mapper.map(dto, ' . $sysNameCamelCase . 'Model.class);
@@ -293,7 +293,7 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 	@ApiOperation(value = "Create list items", response = ' . $sysNameCamelCase . 'Dto.class)
 	@PostMapping("/list")
-	public ResponseEntity<List<' . $sysNameCamelCase . 'Dto>> create' . $sysNameCamelCase . 'List(@ApiParam(value = "List of models", required = true)
+	public ResponseEntity<List<' . $sysNameCamelCase . 'Dto>> create' . $sysNameCamelCase . 'List(@ApiParam(value = "List of models", required = false)
 																				  @RequestBody @Valid List<' . $sysNameCamelCase . 'Dto> dtoList) throws ApiRestException {
 
 		List<' . $sysNameCamelCase . 'Dto> itemDtoList = new ArrayList<>();
@@ -309,9 +309,9 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 	@ApiOperation(value = "Update item given a model", response = ' . $sysNameCamelCase . 'Dto.class)
 	@PutMapping("/{id}")
-	public ResponseEntity<' . $sysNameCamelCase . 'Dto> update' . $sysNameCamelCase . '(@ApiParam(value = "ID of item", example = "1", required = true)
+	public ResponseEntity<' . $sysNameCamelCase . 'Dto> update' . $sysNameCamelCase . '(@ApiParam(value = "ID of item", example = "1", required = false)
 																		@PathVariable Long id,
-																		@ApiParam(value = "Updated model", required = true)
+																		@ApiParam(value = "Updated model", required = false)
 																		@RequestBody @Valid ' . $sysNameCamelCase . 'Dto dto) throws ApiRestException {
 
 		' . $sysNameCamelCase . 'Model ' . $sysNameFirstLetterLowercase . ' = mapper.map(dto, ' . $sysNameCamelCase . 'Model.class);
@@ -322,7 +322,7 @@ public class ' . $sysNameCamelCase . 'Controller {
 
 	@ApiOperation(value = "Delete item by given ID")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete' . $sysNameCamelCase . '(@ApiParam(value = "ID of model", example = "1", required = true)
+	public ResponseEntity<?> delete' . $sysNameCamelCase . '(@ApiParam(value = "ID of model", example = "1", required = false)
 													 @PathVariable Long id) throws ApiRestException {
 
 		service.delete(id);
