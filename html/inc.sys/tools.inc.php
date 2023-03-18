@@ -103,7 +103,7 @@ public interface ' . $sysNameCamelCase . 'Repository extends JpaRepository<' . $
 
     $class_sysNameCamelCase_NotFoundException .= 'package api.web.' . $sysNameLowerCase . ';
 
-import com.devops.api.exception.ApiRestException;
+import api.exception.ApiRestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -233,7 +233,7 @@ public class ' . $sysNameCamelCase . 'Dto {
 
     $class_sysNameCamelCase_Controller .= 'package api.web.' . $sysNameLowerCase . ';
 
-import com.devops.api.exception.ApiRestException;
+import api.exception.ApiRestException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
