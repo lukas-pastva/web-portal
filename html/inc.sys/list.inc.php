@@ -81,7 +81,8 @@ function sysDesignView($print = false)
                             <tr><td colspan="2"><strong>' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['name']) . '</strong><br></td></tr>
                             <tr><td colspan="2">' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['street']) . '<br></td></tr>
                             <tr><td colspan="2">' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['city']) . '<br></td></tr>
-                            <tr><td colspan="2" style="padding-bottom: 10px;">' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['country']) . '<br></td></tr>
+                            <tr><td colspan="2">' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['country']) . '<br></td></tr>
+                            <tr><td colspan="2" style="padding-bottom: 10px;">Spoločnosť zapísaná v Obchodnom registri <br />Mestského súdu Bratislava III., Odd.: Sro, Vl.č.: 169032/B<br></td></tr>
                             <tr><td>IČO:</td><td>' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['ico']) . '</td></tr>
                             <tr><td>DIČ:</td><td>' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['dic']) . '<br></td></tr>
                             <tr><td>' . sysGetAttributeHtml($businessCompany, $businessCompanyAttrs['icdph']) . '<br></td><td></td></tr>
