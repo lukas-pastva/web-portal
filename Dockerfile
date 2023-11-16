@@ -1,4 +1,5 @@
-FROM php:8.0-apache
+FROM php:8.0-cli
+#FROM php:8.0-apache
 
 RUN a2enmod rewrite && \
     apt-get update -y && \
@@ -24,6 +25,9 @@ RUN curl -s -o /tmp/go-pear.phar http://pear.php.net/go-pear.phar && \
 
 RUN mkdir -p /var/www/uploads && chmod 777 /var/www/uploads && chown www-data:www-data /var/www/uploads
 
+EXPOSE 80
+
 USER www-data
 COPY ./html /var/www/html
-USER root
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html"]
