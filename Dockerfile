@@ -1,8 +1,9 @@
 FROM php:8.0-cli
 #FROM php:8.0-apache
 
-RUN a2enmod rewrite && \
-    apt-get update -y && \
+#a2enmod rewrite && \
+
+RUN apt-get update -y && \
 	apt-get install -y --no-install-recommends \
 	apt-transport-https \
 	libgd-dev  \
